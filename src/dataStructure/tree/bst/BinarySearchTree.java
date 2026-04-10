@@ -1,7 +1,19 @@
-package dataStructure.tree;
+package dataStructure.tree.bst;
+
+/**
+ *
+ * 编程导航
+ * • BinarySearchTree (递归范式) 更符合函数式编程思想，代码优雅，
+ * 对于理解递归和树结构自我相似的特性很有帮助。
+ */
+
 
 public class BinarySearchTree {
-    // 定义节点类
+
+
+    /**
+     * 定义节点类
+     */
     class Node {
         int value;      // 节点值
         Node left;      // 左子节点
@@ -14,17 +26,25 @@ public class BinarySearchTree {
         }
     }
     
+
+
     private Node root;  // 根节点
     
     public BinarySearchTree() {
         root = null;
     }
-    
-    // 插入操作
+
+
+    /**
+     * 插入操作
+     * @param value
+     */
     public void insert(int value) {
         root = insertRecursive(root, value);
     }
-    
+
+
+
     private Node insertRecursive(Node current, int value) {
         // 如果当前节点为空，创建新节点
         if (current == null) {
@@ -41,8 +61,17 @@ public class BinarySearchTree {
         // 值已存在，不做任何操作
         return current;
     }
-    
-    // 查找操作
+
+
+
+
+
+    /**
+     * 查找操作
+     * @param value
+     * @return
+     */
+
     public boolean search(int value) {
         return searchRecursive(root, value);
     }
@@ -65,8 +94,14 @@ public class BinarySearchTree {
             return searchRecursive(current.right, value);
         }
     }
-    
-    // 删除操作
+
+
+
+    /**
+     * 删除操作
+     * @param value
+     */
+
     public void delete(int value) {
         root = deleteRecursive(root, value);
     }
@@ -109,12 +144,20 @@ public class BinarySearchTree {
         }
         return current;
     }
-    
-    // 查找子树中的最小值（最左侧节点）
+
+
+    /**
+     * 查找子树中的最小值（最左侧节点）
+     * @param root
+     * @return
+     */
     private int findSmallestValue(Node root) {
         if (root.left == null) {
             return root.value;
         }
         return findSmallestValue(root.left);
     }
+
+
+
 }
